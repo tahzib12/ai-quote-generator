@@ -8,12 +8,15 @@ function App() {
   const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(false);
 
+  
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const generateQuote = async () => {
     setLoading(true);
     setError("");
 
     try {
-      const response = await axios.get("http://localhost:5000/api/quote");
+      const response = await axios.get(`${API_URL}/api/quote`);
       setQuote(response.data.quote);
     } catch (err) {
       setError("❌ Failed to generate quote. Please try again.");
